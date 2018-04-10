@@ -1,0 +1,13 @@
+.bg-header{
+	background: #fff;
+}
+.bg-header .mui-title{
+	color: #333;
+	
+}
+.bg-header button.mui-icon,button.mui-icon-extra-share{
+	border:0;
+	margin:0;
+	padding:0 10px;
+	line-height: 44px;
+}

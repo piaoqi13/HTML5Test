@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="home..css" />
+		<script src="../../js/mui.min.js"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav bg-header">
+			<span>北京</span>
+			<button type="button" class="mui-icon mui-icon-arrowdown"></button>
+			<div class='header-input'>
+				<button type="button" class="mui-icon mui-icon-search"></button>
+				<input type="text" placeholder="门店/医师/服务" />
+				<button type="button" class="mui-icon mui-icon-mic"></button>
+
+			</div>
+			<div class="header-right-button">
+				<button type="button" class=" mui-icon mui-icon-mic"></button>
+				<button type="button" class="mui-icon mui-icon-chatbubble"></button>
+			</div>
+		</header>
+		<div class="mui-content" id='home'>
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="http://placehold.it/400x200">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="http://placehold.it/400x200">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="http://placehold.it/400x200">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="http://placehold.it/400x200">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="http://placehold.it/400x200">
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="http://placehold.it/400x200">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+
+			<ul class="home-subheader">
+				<li id='goAndroid'>
+					<span class="mui-icon mui-icon-weixin"></span>
+					<p>健康资讯</p>
+				</li>
+				<li>
+					<span class="mui-icon mui-icon-weixin"></span>
+					<p>健康资讯</p>
+				</li>
+				<li>
+					<span class="mui-icon mui-icon-weixin"></span>
+					<p>健康资讯</p>
+				</li>
+			</ul>
+			<p class="home-textline">一 推荐医生 一</p>
+
+			<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" id='home-doctors'>
+				<div class="mui-scroll">
+					<a>
+						<img src="../../images/doctor.png" alt="" />
+						<p>危北海</p>
+						<p>国家级名老中医</p>
+					</a>
+					<a>
+						<img src="../../images/doctor.png" alt="" />
+						<p>危北海</p>
+						<p>国家级名老中医</p>
+					</a>
+					<a>
+						<img src="../../images/doctor.png" alt="" />
+						<p>危北海</p>
+						<p>中医</p>
+					</a>
+					<a>
+						<img src="../../images/doctor.png" alt="" />
+						<p>危北海</p>
+						<p>老中医</p>
+					</a>
+					<a>
+						<img src="../../images/doctor.png" alt="" />
+						<p>危北海</p>
+						<p>老中医</p>
+					</a>
+				</div>
+			</div>
+
+			<ul class="home-screen">
+				<li>
+					<span>全部类别</span>
+					<button type="button" class="mui-icon mui-icon-arrowdown"></button>
+				</li>
+				<li>
+					<span>距离最近</span>
+					<button type="button" class="mui-icon mui-icon-arrowdown"></button>
+				</li>
+				<li>
+					<span>全城</span>
+					<button type="button" class="mui-icon mui-icon-arrowdown"></button>
+				</li>
+			</ul>
+			
+		</div>
+		<script type="text/javascript">
+			var mHeihgt= window.screen.height;
+			mui.init()
+			mui.plusReady(function(){
+				var trans = 200;
+				// 跳转源生
+				document.getElementById('goAndroid').addEventListener('tap',function(){
+					var user={'name':'chao','age':'18'};
+					if(mui.os.android){
+						// 创建android实例对象
+						//var test=plus.android.newObject('com.example.chao4_wang.html5test.SDK_WebApp');
+						// 调用实例下的方法
+						//plus.android.invoke(test,'skipAct',JSON.stringify(user))
+						var main = plus.android.runtimeMainActivity();
+						var Intent = plus.android.importClass("android.content.Intent");
+						var intent = new Intent(main.getIntent());
+						intent.putExtra("WV", "WV");
+						intent.setClassName(main, "com.example.chao4_wang.html5test.NativeActivity");
+						intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						//main.startActivity(intent);
+						main.startActivityForResult(intent, 111);
+						main.onActivityResult = function(requestCode, resultCode, data) {
+							plus.android.importClass(data);
+							var str = data.getStringExtra("param");
+							alert(str);
+						};
+					}else if(mui.os.ios){
+						// 创建ios实例对象
+						var test=plus.ios.newObject('SDK_WebApp');
+						// 调用实例下的方法
+						plus.ios.invoke(test,'skipAct',JSON.stringify(user))
+					}
+				})
+			})
+			
+			mui.back = function() {
+				var btnArray = ['否', '是'];
+				mui.confirm('是否退出应用', '同仁堂', btnArray, function(e) {
+					if(e.index == 1) {
+						plus.runtime.quit();
+					}
+				}, 'div')
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,21 @@
+{
+	"index.html": {
+		"resources": [
+			"templates/home/home.html"
+		],
+		"refer": [
+			"templates/my/my.html",
+			"templates/health/health.html",
+			"templates/home/home.html",
+			"templates/news/news.html"
+		]
+	},
+	"templates/home/home.html": {
+		"resources": [
+			"templates/home/home-store-lists.html"
+		],
+		"refer": [
+			"templates/home/home-store-lists.html"
+		]
+	}
+}
